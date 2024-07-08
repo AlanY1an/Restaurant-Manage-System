@@ -1,0 +1,167 @@
+<!-- /*
+* Template Name: Delicious
+* Template Author: Untree.co
+* Author URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+{% extends "base.html" %}
+
+{% block untree_co-hero %}
+<!-- Hero section for article title -->
+<div class="untree_co-hero pb-4" style="background-image: url('images/article-background.jpg'); background-size: cover; background-position: center;">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-8 text-center">
+        <h1 class="mb-0 heading">{{post_detail}}</h1>
+        <!-- Author and Publish Time -->
+        <div class="author-time d-flex justify-content-center align-items-center text-muted">
+          <p class="mb-0">Written by <strong>{{ post_detail.author }}</strong></p>
+          <span class="mx-2">|</span>
+          <p class="mb-0">{{ post_detail.created|date:"Y-m-d H:i" }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock untree_co-hero %}
+
+{% block untree_co-section %}
+<!-- Main content section for article details, tags, search, and comments -->
+  <div class="untree_co-section pt-0 mt-4">
+    <div class="container">
+      <div class="row">
+        <!-- Left Column: Article Content and Comments -->
+        <div class="col-md-8">
+
+          <p class="mt-0">{{post_detail.content}}</p>
+          <div class="article-image-wrapper" style="height: 400px; overflow: hidden; ">
+            <img src="{{ post_detail.image.url }}" alt="image" class="img-fluid" style="width: 100%; object-fit: cover; border-radius: 15px; ">
+          </div>
+          <div class="mb-4 pt-2">
+            {% for tag in post_detail.tags.all %}
+              <a href="{% url 'blog:post_by_tag' tag%}" class="badge bg-light text-dark" style="margin-right: 5px; text-decoration: none;">{{tag.name}}</a>
+            {% endfor %}
+          </div>
+          <!-- Comments Section -->
+          <h2 class="heading mt-5">Comments</h2>
+
+
+          {% for comment in comments %}
+          <div class="card mb-3">
+              <div class="card-body">
+                  <div class="d-flex mb-3">
+                      <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden;">
+                          <svg width="50" height="50">
+                              <circle cx="25" cy="25" r="25" class="randomColorCircle" fill="#000" /> <!-- 默认黑色 -->
+                          </svg>
+                      </div>
+                      <div class="ml-3">
+                          <h5 class="card-title">{{ comment.name }}</h5>
+                          <small class="text-muted">Posted on {{ comment.created }}</small>
+                      </div>
+                  </div>
+                  <p class="card-text">{{ comment.content }}</p>
+              </div>
+          </div>
+          {% endfor %}
+          <script>
+            function randomColor() {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                return `rgb(${r}, ${g}, ${b})`;
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                var circles = document.querySelectorAll('.randomColorCircle');
+                circles.forEach(function(circle) {
+                    circle.setAttribute('fill', randomColor());
+                });
+            });
+            </script>
+                      
+
+          
+          <!-- Leave a comment form -->
+          <h4 class="heading mt-5">Leave a Comment</h4>
+          <form class="mt-3" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Your Phone Number" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Message</label>
+                <textarea class="form-control" id="content" name="content" rows="4" placeholder="Type your comment here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} mt-2">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+            
+        </form>
+        
+          
+        
+        </div>
+
+        <div class="col-md-4">
+          <!-- 更精细的搜索框，确保样式一致性 -->
+          <div class="search-box mb-5 pb-5">
+            <form action = "{% url 'blog:post_list' %}"method="GET" class="input-group">
+              <!-- 文本框：去除右边框 -->
+              <input type="text" class="form-control" name = 'q' value = "{{request.Get.q}}"placeholder="Search articles..." aria-label="Search" style="border-radius: 20px; border: 1px solid #CE1212;margin-right: 8px;">
+              <!-- 按钮：去除左边框，使用!important确保样式生效 -->
+              <button class="btn btn-primary" type="submit" style=";  color: white;">Search</button>
+            </form>
+          </div>
+          
+          
+        
+          <!-- 采用Bootstrap列表组进行分类布局，增强视觉分隔感 -->
+          <h5>Categories</h5>
+          <ul class="list-group mb-5 pb-5">
+            {% for category in categories %}
+              <li class="list-group-item">
+                <a href="{% url 'blog:post_by_category' category.slug %}" class="category-link">{{ category.category_name }}</a>
+                  <div style="clear: both;"></div>
+              </li>
+            {% endfor %}
+
+            <!-- 继续添加其他分类 -->
+        </ul>
+        
+        
+        
+          <!-- 标签部分，保持简洁且与分类相协调 -->
+          <h5>Tag Cloud</h5>
+          <div class="mb-4">
+              {% for tag in all_tags %}
+                <a href="{% url 'blog:post_by_tag' tag %}" class="badge bg-light text-dark fs-4 py-2 px-3" style="margin-right: 5px; text-decoration: none;">{{tag.name}}</a>
+              {% endfor %}
+          </div>
+          
+        </div>
+        
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+{% endblock untree_co-section %}
+{% block working %}{% endblock working %}
+{% block rest %}{% endblock rest %}
+
+
+
