@@ -1,0 +1,342 @@
+<!-- /*
+* Template Name: Delicious
+* Template Author: Untree.co
+* Author URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+
+{% load static%}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="{% static 'site_static/favicon.png' %}">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'site_static/css/nb.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/fonts/flaticon/font/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'site_static/css/style.css' %}">  
+
+  <title>Deli's Kitchen</title>
+</head>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var categories = document.querySelectorAll('.js-custom-dots li a');
+      // 默认激活第一个类别
+      if (categories.length > 0) {
+          categories[0].parentElement.classList.add('active');
+      }
+  });
+  </script>
+  
+<body>
+
+  <div class="site-mobile-menu">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+  <nav class="site-nav mb-5">
+    <div class="container-fluid">
+      <div class="site-navigation text-center">
+        <a href="/" class="logo menu-absolute m-0">Delicious<span class="text-primary">.</span></a>
+        <ul class="js-clone-nav d-none d-lg-inline-block site-menu">
+          <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="/">Home</a></li>
+          <li class="{% if request.resolver_match.url_name == 'meal_list' %}active{% endif %}"><a href="{% url 'meals:meal_list' %}">Menu</a></li>
+          <li class="{% if request.resolver_match.url_name == 'post_list' %}active{% endif %}"><a href="{% url 'blog:post_list' %}">Blog</a></li>
+          <li class="{% if request.resolver_match.url_name == 'aboutus_list' %}active{% endif %}"><a href="{% url 'aboutus:aboutus_list' %}">About</a></li>
+          <li class="{% if request.resolver_match.url_name == 'send_email' %}active{% endif %}"><a href="{% url 'contact:send_email' %}">Contact</a></li>
+        </ul>
+        <a href="{% url 'reservation:reserve_table' %}" class="btn-book btn btn-primary btn-sm menu-absolute">Book a table</a>
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+
+  {% block untree_co-hero %}
+    <div class="untree_co-hero">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-5">
+            <h1 class="mb-4 heading" data-aos="fade-up" data-aos-delay="100">Enjoy Your Healthy Delicious Food</h1>
+            <p class="mb-4 desc" data-aos="fade-up" data-aos-delay="200">
+              Explore a variety of healthy and delicious meals crafted with care.
+            </p>
+            <p class="mb-0" data-aos="fade-up" data-aos-delay="300">
+              <a href="{% url 'meals:meal_list' %}" class="btn btn-primary">See our menu</a>
+            </p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="hero-img-wrap">
+              <span class="img-circle rotating">
+                <img src="{% static 'site_static/images/circle-two.png' %}" alt="Rotating Circle 1" class="img-fluid">
+              </span>
+              <span class="img-circle rotating2">
+                <img src="{% static 'site_static/images/circle-one.png' %}" alt="Rotating Circle 2" class="img-fluid">
+              </span>
+              <img src="{% static 'site_static/images/bowl.png' %}" alt="Delicious Food" class="img-fluid img-bowl">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    <ul class="list-unstyled social-hero-section mb-0">
+      <li data-aos="fade-left" data-aos-delay="0"><a href="#"><span class="icon-whatsapp"></span></a></li>
+      <li data-aos="fade-left" data-aos-delay="100"><a href="#"><span class="icon-instagram"></span></a></li>
+      <li data-aos="fade-left" data-aos-delay="200"><a href="#"><span class="icon-facebook"></span></a></li>
+      <li data-aos="fade-left" data-aos-delay="300"><a href="#"><span class="icon-twitter"></span></a></li>
+    </ul>
+    </div> <!-- /.untree_co-hero -->
+  {% endblock untree_co-hero %}
+
+
+  {% block untree_co-section %}
+  {% endblock untree_co-section %}
+
+{% block working %}
+    <div class="untree_co-section bg-img fixed overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mb-5 mb-lg-0 mr-auto testimonial-wrap" data-aos="fade-up" data-aos-delay="0">
+            <span class="subtitle">Testimonials</span>
+            <h2 class="mb-5">Satisfied <strong class="text-primary">Customers</strong></h2>
+            <div class="owl-carousel wide-slider-testimonial">
+              <div class="item">
+                <blockquote class="block-testimonial">
+                  <div class="author">
+                    <img src="{% static 'site_static/images/person_1.jpg' %}" alt="Free template by TemplateUX">
+                    <h3>John Doe</h3>
+                    <p class="position mb-5">CEO, Founder</p>
+                  </div>
+                  <p>
+                    <div class="quote">&ldquo;</div>
+                  &ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+                </blockquote>
+              </div>
+              <div class="item">
+                <blockquote class="block-testimonial">
+                  <div class="author">
+                    <img src="{% static 'site_static/images/person_2.jpg' %}" alt="Free template by TemplateUX">
+                    <h3>James Woodland</h3>
+                    <p class="position mb-5">Designer at Facebook</p>
+                  </div>
+                  <p>
+                    <div class="quote">&ldquo;</div>
+                  &ldquo;When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.&rdquo;</p>
+                </blockquote>
+              </div>
+              <div class="item">
+                <blockquote class="block-testimonial">
+                  <div class="author">
+                    <img src="{% static 'site_static/images/person_3.jpg' %}" alt="Free template by TemplateUX">
+                    <h3>Rob Smith</h3>
+                    <p class="position mb-5">Product Designer at Twitter</p>
+                  </div>
+                  <p>
+                    <div class="quote">&ldquo;</div>
+                  &ldquo;A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+            <span class="subtitle">Galleries</span>
+            <h2 class="mb-5">Photo <strong class="text-primary">Galleries</strong></h2>
+            <div class="row">
+              <div class="col-4 mb-4">
+                <a href="{% static 'site_static/images/img_1.jpg' %}" data-fancybox="gallery" class="gal"><img src="{% static 'site_static/images/img_1.jpg' %}" alt="Image" class="img-fluid"></a>
+              </div>
+              <div class="col-4 mb-4">
+                <a href="{% static 'site_static/images/img_2.jpg' %}" data-fancybox="gallery" class="gal"><img src="{% static 'site_static/images/img_2.jpg' %}" alt="Image" class="img-fluid"></a>
+              </div>
+              <div class="col-4 mb-4">
+                <a href="{% static 'site_static/images/img_3.jpg' %}" data-fancybox="gallery" class="gal"><img src="{% static 'site_static/images/img_3.jpg' %}" alt="Image" class="img-fluid"></a>
+              </div>
+              <div class="col-4 mb-4">
+                <a href="{% static 'site_static/images/img_4.jpg' %}" data-fancybox="gallery" class="gal"><img src="{% static 'site_static/images/img_4.jpg' %}" alt="Image" class="img-fluid"></a>
+              </div>
+              <div class="col-4 mb-4">
+                <a href="{% static 'site_static/images/img_5.jpg' %}" data-fancybox="gallery" class="gal"><img src="{% static 'site_static/images/img_5.jpg' %}" alt="Image" class="img-fluid"></a>
+              </div>
+              <div class="col-4 mb-4">
+                <a href="{% static 'site_static/images/img_6.jpg' %}" data-fancybox="gallery" class="gal"><img src="{% static 'site_static/images/img_6.jpg' %}" alt="Image" class="img-fluid"></a>
+              </div>
+              <div class="col-12">
+                <a href="#" class="btn btn-primary">More Galleries</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- .container -->
+    </div> <!-- /.untree_co-section -->
+{% endblock working %}
+
+{% block rest %}
+    <div class="untree_co-section">
+      <div class="container">
+        <div class="row mb-4 justify-content-center">
+          <div class="col-md-7 text-center mb-5" data-aos="fade-up" data-aos-delay="0">
+            <span class="subtitle">Upcoming Events</span>
+            <h2 class="heading">Enjoy <strong class="text-primary">Our Events</strong></h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
+        </div>
+        <div class="events-slider owl-carousel" data-aos="fade-up" data-aos-delay="100">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6">
+              <img src="{% static 'site_static/images/img_rect_1-min.jpg' %}" alt="Image" class="img-fluid rounded-10">
+            </div>
+            <div class="col-lg-5">
+              <span class="event-price d-block">$200.99</span>
+              <h3 class="mb-4 event-title">Birthday Party</h3>
+              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+              <ul class="list-unstyled ul-check primary">
+                <li>Away behind the word</li>
+                <li>Bookmarksgrove right at the coast</li>
+                <li>Separated they live</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 order-lg-2">
+              <img src="{% static 'site_static/images/img_rect_2-min.jpg' %}" alt="Image" class="img-fluid rounded-10">
+            </div>
+            <div class="col-lg-5">
+              <span class="event-price d-block">$200.99</span>
+              <h3 class="mb-4 event-title">Guest Chef Night Party</h3>
+              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+              <ul class="list-unstyled ul-check primary">
+                <li>Away behind the word</li>
+                <li>Bookmarksgrove right at the coast</li>
+                <li>Separated they live</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.untree_co-section -->
+
+    <div class="untree_co-section bg-img py-5 fixed overlay">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7 text-center">
+            <h3 class="heading">Book A Table Now</h3>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p class="mb-0"><a href="{% url 'reservation:reserve_table' %}" class="btn btn-primary">Book a table</a></p>
+          </div>
+        </div>
+      </div> <!-- .container -->
+    </div> <!-- /.untree_co-section -->
+  {% endblock rest %}
+
+
+  <div class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="widget">
+            <h3>About Bistro<span class="text-primary">.</span></h3>
+            <p>Bistro is a cozy restaurant offering a fusion of global cuisines with a focus on fresh, locally sourced ingredients. Join us for a delightful dining experience!</p>
+          </div> <!-- /.widget -->
+          <div class="widget">
+            <h3>Connect</h3>
+            <ul class="list-unstyled social">
+              <li><a href="#"><span class="icon-instagram"></span></a></li>
+              <li><a href="#"><span class="icon-twitter"></span></a></li>
+              <li><a href="#"><span class="icon-facebook"></span></a></li>
+              <li><a href="#"><span class="icon-linkedin"></span></a></li>
+              <li><a href="#"><span class="icon-pinterest"></span></a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-4 -->
+        <div class="col-lg-2 ml-auto">
+          <div class="widget">
+            <h3>Menu</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="#">Appetizers</a></li>
+              <li><a href="#">Main Courses</a></li>
+              <li><a href="#">Desserts</a></li>
+              <li><a href="#">Beverages</a></li>
+              <li><a href="#">Kids Menu</a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-2 -->
+        <div class="col-lg-2">
+          <div class="widget">
+            <h3>Services</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="#">Dine-In</a></li>
+              <li><a href="#">Takeout</a></li>
+              <li><a href="#">Catering</a></li>
+              <li><a href="#">Private Events</a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-2 -->
+        <div class="col-lg-3">
+          <div class="widget">
+            <h3>Contact</h3>
+            <address>123 Gourmet St, Food City, NY 10001</address>
+            <ul class="list-unstyled links mb-4">
+              <li><a href="tel:+11234567890">+1 (123) 456-7890</a></li>
+              <li><a href="tel:+11234567891">+1 (123) 456-7891</a></li>
+              <li><a href="mailto:info@bistro.com">info@bistro.com</a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-3 -->
+      </div> <!-- /.row -->
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script>. Bistro. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div> <!-- /.container -->
+  </div> <!-- /.site-footer -->
+  
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+  <script src="{% static 'site_static/js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'site_static/js/popper.min.js' %}"></script>
+  <script src="{% static 'site_static/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'site_static/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'site_static/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'site_static/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'site_static/js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'site_static/js/aos.js' %}"></script>
+  <script src="{% static 'site_static/js/custom.js' %}"></script>
+
+</body>
+
+</html>

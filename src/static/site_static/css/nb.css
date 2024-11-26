@@ -1,0 +1,14 @@
+.category-link {
+    color: #CE1212  !important; /* 默认颜色 */
+    float: left  !important;
+    text-decoration: none  !important; /* 移除下划线 */
+}
+
+.category-link:hover {
+    color: #e11414  !important; /* 悬停时的颜色 */
+}
+
+/* 悬停在列表项上时改变边框颜色 */
+.list-group-item:hover {
+    border-bottom-color: #e11414  !important; /* 悬停时的边框颜色 */
+}

@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+
+
+{% block untree_co-hero %}
+  <div class="untree_co-hero pb-0">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+
+        <div class="col-12">
+          <div class="row align-items-center">
+
+            <div class="col-lg-5 mx-auto text-center">
+
+              <h1 class="mb-4 heading" data-aos="fade-up" data-aos-delay="100">Book A Table</h1>
+              <div class="mb-4 desc" data-aos="fade-up" data-aos-delay="200">
+                <p>Another free template by <a href="https://untree.co/" target="_blank" class="link-highlight">Untree.co</a>. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              </div>
+
+              <p class="mb-0" data-aos="fade-up" data-aos-delay="300"><a href="/meals"  class="btn btn-primary">Back to Menu</a></p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    
+  </div> <!-- /.untree_co-hero -->
+  {% endblock untree_co-hero %}  
+    
+{% block untree_co-section %}
+
+  
+  <div class="untree_co-section">
+    
+    <div class="container">
+      
+        <div class="row">
+            <!-- Contact Information Column -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-info">
+                    <!-- Location -->
+                    <div class="address">
+                        <i class="icon-room"></i>
+                        <h4 class="mb-2">Location:</h4>
+                        <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+                    </div>
+                    <!-- Open Hours -->
+                    <div class="open-hours mt-4">
+                        <i class="icon-clock-o"></i>
+                        <h4 class="mb-2">Open Hours:</h4>
+                        <p>Sunday-Friday:<br>11:00 AM - 2300 PM</p>
+                    </div>
+                    <!-- Email -->
+                    <div class="email mt-4">
+                        <i class="icon-envelope"></i>
+                        <h4 class="mb-2">Email:</h4>
+                        <p>info@untree.co</p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="phone mt-4">
+                        <i class="icon-phone"></i>
+                        <h4 class="mb-2">Call:</h4>
+                        <p>+1 1234 55488 55</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form Column -->
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                {% comment "" %}
+                <form action="submit_form.php" method="post">
+                    <div class="row">
+                        <!-- Name and Phone input in the first row -->
+                        <div class="col-6 mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                        </div>
+                        <!-- Email and Number of Persons in the second row -->
+                        <div class="col-6 mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <select class="form-control" name="number_of_persons" required>
+                                <option value="">Persons</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <!-- Date and Time in the third row -->
+                        <div class="col-6 mb-3">
+                            <input type="date" class="form-control" name="date" required>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <input type="time" class="form-control" name="time" required>
+                        </div>
+                        <!-- Message box -->
+                        <div class="col-12 mb-3">
+                            <textarea class="form-control" name="message" rows="7" placeholder="Your Message..."></textarea>
+                        </div>
+                        <!-- Submit button -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Book A Table Now</button>
+                        </div>
+                    </div>
+                </form>
+                {% endcomment %}
+
+                <form id="reservationForm" action="" method="post">
+                  {% csrf_token %}
+                  <div class="row">
+                      <!-- Name and Phone input in the first row -->
+                      <div class="col-6 mb-3">
+                          <input type="text" class="form-control" name="name" placeholder="Name" required>
+                      </div>
+                      <div class="col-6 mb-3">
+                          <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                      </div>
+                      <!-- Email and Number of Persons in the second row -->
+                      <div class="col-6 mb-3">
+                          <input type="email" class="form-control" name="email" placeholder="Email" required>
+                      </div>
+                      <div class="col-6 mb-3">
+                          <select class="form-control" name="number_of_persons" required>
+                              <option value="">Persons</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                          </select>
+                      </div>
+                      <!-- Date and Time in the third row -->
+                      <div class="col-6 mb-3">
+                          <input type="date" class="form-control" name="date" required>
+                      </div>
+                      <div class="col-6 mb-3">
+                          <input type="time" class="form-control" name="time" required>
+                      </div>
+                      <!-- Message box -->
+                      <div class="col-12 mb-3">
+                          <textarea class="form-control" name="message" rows="7" placeholder="Your Message..."></textarea>
+                          {% if messages %}
+                          {% for message in messages %}
+                              <div class="alert alert-{{ message.tags }} mt-2">
+                                  {{ message }}
+                              </div>
+                          {% endfor %}
+                          {% endif %}
+                      </div>
+                      <!-- Success Alart-->
+  
+
+                      <!-- Submit button -->
+                      <div class="col-12">
+                          <button type="submit" class="btn btn-primary">Book A Table Now</button>
+                      </div>
+                  </div>
+
+              </form>
+              <!-- 保持原来的滑动位置 !)-->
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const form = document.getElementById("reservationForm");
+                    if (form) {
+                        form.onsubmit = function() {
+                            sessionStorage.setItem('scrollPosition', window.scrollY);
+                        };
+                    }
+                    
+                    if (sessionStorage.scrollPosition) {
+                        window.scrollTo(0, parseInt(sessionStorage.getItem('scrollPosition')));
+                        sessionStorage.removeItem('scrollPosition'); // 清除存储，以免影响其他页面
+                    }
+                });
+                </script>
+                
+
+            </div>
+        </div>
+
+    </div>
+  </div> <!-- /.untree_co-section -->
+
+
+
+{% endblock untree_co-section %}
+{% block working %}{% endblock working %}
+{% block rest %}{% endblock rest %}
+
+
+  
